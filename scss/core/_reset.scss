@@ -1,0 +1,221 @@
+// Render All ELements In HTML File
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+// ::-moz-selection,
+// ::selection {}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+}
+
+a,
+span {
+  display: block;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-heading {
+  width: fit-content;
+  margin: 0 auto 100px;
+  padding: 12px 20px;
+  font-size: 30px;
+  border: 2px solid #000;
+  text-transform: uppercase;
+  position: relative;
+  transition: 0.3s linear;
+  z-index: 3;
+
+  @include breakpoints(320px) {
+    font-size: 19px;
+  }
+
+  &:hover {
+    color: #fff;
+    border: 2px solid #fff;
+    transition-delay: 0.5s;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: $main-color;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+  }
+
+  &::before {
+    left: -30px;
+  }
+
+  &::after {
+    right: -30px;
+  }
+
+  &:hover::before {
+    animation: to-left 0.5s linear forwards;
+  }
+
+  &:hover::after {
+    animation: to-right 0.5s linear forwards;
+  }
+
+  @include animation(to-left) {
+    50% {
+      left: 0px;
+    }
+
+    100% {
+      left: 0px;
+      width: 50%;
+      height: 100%;
+      border-radius: 0%;
+    }
+  }
+
+  @include animation(to-right) {
+    50% {
+      right: 0px;
+    }
+
+    100% {
+      right: 0px;
+      width: 50%;
+      height: 100%;
+      border-radius: 0%;
+    }
+  }
+}
+
+.dots-up {
+  top: 200px;
+  right: 0;
+}
+
+.dots-down {
+  bottom: 100px;
+  left: 0;
+}
+
+.dots {
+  background-image: url(../images/dots.png);
+  height: 186px;
+  width: 204px;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 0;
+
+  @include breakpoints(small) {
+    display: none;
+  }
+}
+
+
+
+.left {
+  @include transform(translateX(60%));
+}
+
+.right {
+  @include transform(translateX(-60%));
+}
+
+.left,
+.right {
+  opacity: 0;
+  @include transition($long-transition, null);
+}
+
+.zoom-in {
+  opacity: 0;
+  @include transform(scale(0.3));
+}
+
+.hidden {
+  opacity: 0;
+}
+
+section {
+  overflow: hidden;
+}
+
+// Animations 
+@include animation(go-down) {
+
+  0%,
+  10%,
+  20%,
+  50%,
+  80%,
+  100% {
+    bottom: 20px;
+  }
+
+  40%,
+  60% {
+    bottom: 35px;
+  }
+}
+
+@include animation(arrow-right) {
+  0% {
+    transform: translateX(0px);
+  }
+
+  100% {
+    transform: translateX(10px);
+  }
+}
+
+@include animation(change-background) {
+  from {
+    background-image: url(../images/discount-background1.jpg);
+  }
+
+  to {
+    background-image: url(../images/discount-background2.jpg);
+  }
+}
+
+@include animation(flashing) {
+
+  50%,
+  100% {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

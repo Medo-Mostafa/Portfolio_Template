@@ -1,0 +1,105 @@
+@mixin overlay($background-color) {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $background-color;
+}
+
+// These Media For Responsive
+@mixin breakpoints($point) {
+  @if $point ==mobile {
+    @media (max-width: 767px) {
+      @content;
+    }
+  }
+
+  @else if $point ==small {
+    @media (max-width: 991px) {
+      @content;
+    }
+  }
+
+  @else if $point ==medium {
+    @media (min-width: 992px) and (max-width: 1199px) {
+      @content;
+    }
+  }
+
+  @else if $point ==large {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+
+  @else {
+    @media (max-width: $point) {
+      @content;
+    }
+  }
+}
+
+/// Set Border-Radius To Element
+/// @param(pixel) => Number
+@mixin border-radius($pixel) {
+  border-radius: $pixel;
+  -webkit-border-radius: $pixel;
+  -moz-border-radius: $pixel;
+}
+
+// Set Border To Element
+@mixin border($color, $opacity, $direction) {
+  @if ($direction) {
+    border-#{$direction}: 1px solid rgba($color: $color, $alpha: $opacity);
+  }
+
+  @else {
+    border: 1px solid rgba($color: $color, $alpha: $opacity);
+  }
+}
+
+// Set Box Shadow To Element
+@mixin box-shadow($x-axis, $y-axis, $blur, $spread, $color) {
+  box-shadow: $x-axis $y-axis $blur $spread $color;
+}
+
+// Generate Animation For Element;
+@mixin animation($animationName) {
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+// Set Display For Element To [display:flex] With Some Properties That Usually Use
+@mixin flex-box {
+  display: flex;
+  align-items: center;
+}
+
+// Set Display For Element To [display:grid] With Some Properties That Usually Use
+@mixin grid-system($min) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min, 1fr));
+}
+
+@mixin transition($duration, $timing) {
+  @if ($timing) {
+    transition: $duration $timing;
+    -webkit-transition: $duration $timing;
+    -moz-transition: $duration $timing;
+  }
+
+  @else {
+    transition: $duration;
+    -webkit-transition: $duration;
+    -moz-transition: $duration;
+  }
+}
+
+@mixin transform($property) {
+  transform: $property;
+  -webkit-transform: $property;
+  -moz-transform: $property;
+}

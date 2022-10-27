@@ -1,0 +1,125 @@
+footer {
+  padding: 70px 0 0;
+  background-color: #191919;
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 40px;
+
+    .box {
+      h3 {
+        margin: 0 0 20px;
+        font-size: 50px;
+        color: #fff;
+      }
+
+      .social {
+        display: flex;
+
+        li {
+          margin-right: 10px;
+
+          a {
+            font-size: 20px;
+            color: #b9b9b9;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #313131;
+            @include transition(linear, 0.3s);
+
+            &:hover {
+              &.facebook {
+                background-color: #1877f2;
+              }
+
+              &.twitter {
+                background-color: #1da1f2;
+              }
+
+              &.youtube {
+                background-color: #ff0000;
+              }
+            }
+          }
+        }
+      }
+
+      .links {
+        li {
+          padding: 15px 0;
+          @include transition(linear, 0.3s);
+
+          &:not(:last-child) {
+            border-bottom: 1px solid #444;
+          }
+
+          a {
+            color: #b9b9b9;
+            @include transition(linear, 0.3s);
+
+            &::before {
+              font-family: "Font Awesome 5 Free";
+              content: "\F101";
+              color: $main-color;
+              font-weight: bold;
+              margin-right: 10px;
+            }
+
+            &:hover {
+              @include transform(translateX(20px));
+              color: #fff;
+            }
+
+
+          }
+        }
+      }
+
+      .line {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        color: #b9b9b9;
+
+        svg {
+          margin-right: 10px;
+          color: $main-color;
+          font-size: 25px;
+        }
+
+        .info {
+          flex: 1;
+          line-height: 1.7;
+        }
+      }
+
+      .text {
+        margin: 20px 0;
+        color: #b9b9b9;
+        line-height: 2;
+      }
+
+      &.footer-gallery {
+        text-align: center;
+
+        img {
+          border: 3px solid #fff;
+          width: 75px;
+          margin: 2px;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    text-align: center;
+    color: #fff;
+    padding: 25px 0;
+    margin: 50px 0 0;
+    border-top: 1px solid #444;
+  }
+}

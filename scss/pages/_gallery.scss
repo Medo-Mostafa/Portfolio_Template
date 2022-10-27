@@ -1,0 +1,50 @@
+.gallery {
+  background-color: $section-bg;
+  padding: $main-pd;
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 40px;
+
+    .box {
+      padding: 15px;
+      background-color: #fff;
+
+      .image {
+        overflow: hidden;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: 0%;
+          height: 0%;
+          background-color: rgb(255 255 255 / 20%);
+          left: 50%;
+          top: 50%;
+          @include transform(translate(-50%, -50%));
+          z-index: 1;
+          opacity: 0;
+        }
+
+        img {
+          max-width: 100%;
+          transition: 0.3s linear;
+
+        }
+
+        &:hover {
+          img {
+            transform: rotate(5deg) scale(1.1);
+          }
+
+          &::before {
+            animation: flashing 0.7s linear;
+          }
+
+        }
+      }
+    }
+  }
+}

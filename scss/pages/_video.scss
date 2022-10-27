@@ -1,0 +1,70 @@
+.videos {
+  padding: $main-pd;
+
+  .container {
+    .holder {
+      display: flex;
+      justify-content: center;
+      border: 1px solid #ddd;
+      background-color: $section-bg;
+
+      @include breakpoints(small) {
+        flex-direction: column;
+      }
+
+      .list {
+        min-width: 300px;
+        background-color: white;
+
+        @include breakpoints(small) {
+          & {
+            min-width: 230px;
+          }
+        }
+
+        .title {
+          display: flex;
+          justify-content: space-between;
+          padding: 20px;
+          font-weight: bold;
+          color: $main-color;
+          background-color: #f4f4f4;
+        }
+
+        ul {
+
+          li {
+            padding: 20px;
+            border-top: 1px solid $section-bg;
+            @include transition($short-transition, null);
+            cursor: pointer;
+
+            &:hover {
+              color: $main-color;
+              background-color: #fafafa;
+            }
+
+            span {
+              color: #777;
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+
+      .preview {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: #e2e2e2;
+
+        .details {
+          padding: 20px;
+          margin-top: 10px;
+          background-color: white;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,156 @@
+.features {
+  padding: $main-pd;
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 40px;
+
+    .box {
+      border: 1px solid #ccc;
+      text-align: center;
+      opacity: 0;
+
+      .image {
+        position: relative;
+        overflow: hidden;
+        clip-path: polygon(100% 0, 100% 100%, 100% 53%, 0 85%, 0 0);
+        @include transition(0.2s, ease-in-out);
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+      }
+
+      &.quality {
+        .image::before {
+          background-color: rgb(244 64 54 / 60%);
+        }
+
+        h2::before {
+          background-color: #f44036;
+        }
+
+        a {
+          color: #f44036;
+          border-color: #f44036 !important;
+
+          &::before {
+            background-color: #f44036;
+          }
+        }
+      }
+
+      &.time {
+        .image::before {
+          background-color: rgb(0 150 136 / 60%);
+        }
+
+        h2::before {
+          background-color: #009688;
+        }
+
+        a {
+          color: #009688;
+          border-color: #009688 !important;
+
+          &::before {
+            background-color: #009688;
+          }
+        }
+      }
+
+      &.passion {
+        .image::before {
+          background-color: rgb(3 169 244 / 60%);
+        }
+
+        h2::before {
+          background-color: #03a9f4;
+        }
+
+        a {
+          color: #03a9f4;
+          border-color: #03a9f4 !important;
+
+          &::before {
+            background-color: #03a9f4;
+          }
+        }
+      }
+
+      .text {
+
+        h2 {
+          font-size: 40px;
+          position: relative;
+          width: fit-content;
+          margin: auto;
+
+          &::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            @include transform(translateX(-50%));
+            width: 78%;
+            height: 5px;
+            bottom: -20px;
+
+          }
+        }
+
+        p {
+          font-size: 20px;
+          color: #777;
+          margin: 30px 0;
+          padding: 25px;
+          line-height: 2;
+        }
+      }
+
+      a {
+        width: fit-content;
+        font-size: 22px;
+        font-weight: bold;
+        border-radius: 6px;
+        margin: 0 auto 30px;
+        padding: 10px 30px;
+        border: 3px solid transparent;
+        position: relative;
+        @include transition($short-transition, null);
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: 0%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          @include transition($short-transition, null);
+          z-index: -1;
+        }
+      }
+
+      &:hover {
+        .image {
+          clip-path: polygon(100% 0, 100% 100%, 0% 70%, 0 85%, 0 0);
+        }
+
+        a {
+          color: #fff;
+
+          &::before {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+  }
+}

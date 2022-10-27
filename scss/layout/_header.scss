@@ -1,0 +1,151 @@
+header {
+  background-color: #fff;
+  box-shadow: 0 0 10px #ddd;
+  z-index: 9999;
+
+  .container {
+    @include flex-box;
+    justify-content: space-between;
+    position: relative;
+
+    @include breakpoints(mobile) {
+      & {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+
+    .logo {
+      color: $main-color;
+      margin: 10px 0;
+
+      font: {
+        size: 1.7rem;
+        weight: bold;
+      }
+    }
+
+    .main-links {
+      @include flex-box;
+      justify-content: center;
+
+      @include breakpoints(mobile) {
+        width: 100%;
+      }
+
+      li {
+        a:not(.mega-menu li a) {
+          color: #000;
+          padding: 25px;
+          font-size: $small-heading;
+          @include transition($short-transition, null);
+          position: relative;
+
+          @include breakpoints(mobile) {
+            padding: 12px 7px;
+            font-size: 15px;
+          }
+
+          &:hover {
+            background-color: #fafafa;
+            color: $main-color;
+
+            &::before {
+              width: 100%;
+            }
+          }
+
+          &::before {
+            content: "";
+            width: 0%;
+            height: 5px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: $main-color;
+            @include transition($short-transition, null);
+          }
+
+        }
+
+        &:hover {
+          .mega-menu {
+            top: 102%;
+            opacity: 1;
+            z-index: 5;
+          }
+        }
+
+        .mega-menu {
+          position: absolute;
+          left: 0;
+          top: 230%;
+          display: flex;
+          z-index: -1;
+          gap: 40px;
+          border-bottom: 3px solid #2196f3;
+          padding: 30px;
+          background-color: #fff;
+          width: 100%;
+          opacity: 0;
+
+          @include transition($short-transition, null);
+
+          @include breakpoints(mobile) {
+            flex-direction: column;
+            gap: 0;
+            padding: 10px;
+          }
+
+          .image {
+            img {
+              max-width: 100%;
+            }
+
+            @include breakpoints(small) {
+              display: none;
+            }
+          }
+
+          .links {
+            min-width: 240px;
+            flex: 1;
+
+            li {
+              a {
+                color: $main-color;
+                position: relative;
+                font-weight: bold;
+                border-bottom: 1px solid #e9e6e6;
+                padding: 15px;
+                font-size: 18px;
+
+                svg {
+                  margin-right: 10px;
+                }
+
+                &::before {
+                  content: "";
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  width: 0;
+                  height: 100%;
+                  background-color: #fafafa;
+                  z-index: -1;
+                  @include transition($short-transition, null)
+                }
+
+                &:hover::before {
+                  width: 100%;
+                }
+              }
+
+            }
+          }
+        }
+      }
+
+    }
+  }
+}

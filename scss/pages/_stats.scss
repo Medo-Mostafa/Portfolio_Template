@@ -1,0 +1,86 @@
+.stats {
+  padding: $main-pd;
+  position: relative;
+  background-image: url(../images/stats.jpg);
+  background-size: cover;
+  text-align: center;
+
+  h2 {
+    font-size: 40px;
+    font-weight: bold;
+    width: fit-content;
+    margin: 0 auto 50px;
+    position: relative;
+
+    @include breakpoints(mobile) {
+      font-size: 29px;
+    }
+
+
+
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255 255 255 / 95%);
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+
+    .box {
+      opacity: 0.8;
+      position: relative;
+      padding: 30px 15px;
+      text-align: center;
+      background-color: white;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        background-color: $main-color;
+        height: 0%;
+        @include transition(1s, ease-in-out);
+      }
+
+      &::before {
+        left: 0;
+        bottom: 0;
+      }
+
+      &::after {
+        right: 0;
+        top: 0;
+      }
+
+      &:hover {
+
+        &::before,
+        &::after {
+          height: 100%;
+        }
+      }
+
+      .number {
+        font-size: 50px;
+        font-weight: bold;
+        margin: 10px 0;
+      }
+
+      i {
+        color: $main-color;
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -1,0 +1,130 @@
+.events {
+  padding: $main-pd;
+  position: relative;
+
+  .container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    img {
+      max-width: 450px;
+
+      @include breakpoints(small) {
+        display: none;
+      }
+    }
+
+    .info {
+      flex: 1;
+      text-align: center;
+
+      .time {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        justify-content: center;
+        margin: 20px 0;
+
+        @include breakpoints(320px) {
+          gap: 5px;
+        }
+
+        .unit {
+          width: 65px;
+          text-align: center;
+          border-radius: 6px;
+          border: 1px solid #d4d4d4;
+          @include transition($short-transition, null);
+
+          &:hover {
+            border: 1px solid $main-color;
+          }
+
+          span {
+            display: block;
+
+            &:first-child {
+              color: $main-color;
+
+              font: {
+                size: 35px;
+                weight: bold;
+              }
+
+              padding: 10px;
+
+            }
+
+            &:last-child {
+              padding: 8px;
+              font-size: 13px;
+              border-top: 1px solid #d4d4d4;
+            }
+          }
+        }
+      }
+
+      h2 {
+        margin: 30px 0 20px;
+        font-size: 26px;
+      }
+
+      p {
+        line-height: 1.7;
+        font-size: 18px;
+        color: #777;
+      }
+    }
+
+    .subscribe {
+      width: 100%;
+
+      form {
+        display: flex;
+        gap: 20px;
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 30px 40px;
+        border-radius: 50px;
+        background-color: #f6f5f5;
+
+        @include breakpoints(mobile) {
+          border-radius: 0px;
+          flex-direction: column;
+
+        }
+
+        input[type="email"],
+        input[type="submit"] {
+          border: none;
+          padding: 20px;
+          border-radius: 50px;
+
+          @include breakpoints(mobile) {
+            border-radius: 0;
+          }
+        }
+
+        input[type="email"] {
+          flex: 1;
+          caret-color: $main-color;
+        }
+
+        input[type="submit"] {
+          background-color: $main-color;
+          color: #fff;
+          font-weight: bold;
+          cursor: pointer;
+          font-size: 15px;
+          @include transition(0.3s, linear);
+
+          &:hover {
+            background-color: $alt-color;
+          }
+        }
+      }
+    }
+  }
+}
